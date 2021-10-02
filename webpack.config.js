@@ -13,6 +13,8 @@ const entryFile = srcPath + "/index.tsx";
 module.exports = (env) => {
   env = env || {};
 
+  const ghPagesMode = env.ghpages !== undefined;
+
   return {
     mode: env.development ? "development" : "production",
     devtool: env.development ? "eval-cheap-module-source-map" : undefined,
@@ -37,7 +39,7 @@ module.exports = (env) => {
     output: {
       filename: env.development ? "[name].js" : "[name].[contenthash].js",
       path: distPath,
-      publicPath: "/",
+      publicPath: ghPagesMode ? "/image-color-picker/" : "",
       clean: env.clean === "true",
     },
 
