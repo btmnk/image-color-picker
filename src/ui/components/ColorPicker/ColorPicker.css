@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+
+  & .canvasContainer {
+    flex: 1;
+  }
+
+  & .colorPreview {
+    width: 250px;
+  }
+}

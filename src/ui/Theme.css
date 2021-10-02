@@ -8,9 +8,19 @@
   src: url("../assets/fonts/NunitoSans-Bold.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Catamaran";
+  src: url("../assets/fonts/Catamaran-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Catamaran";
+  font-weight: 500;
+  src: url("../assets/fonts/Catamaran-Bold.ttf") format("truetype");
+}
+
 html {
   font-family: var(--baseFont);
-  font-size: 14px;
+  font-size: 16px;
   scroll-behavior: smooth;
   color: var(--textColor);
   background: var(--bgColor);
@@ -18,14 +28,27 @@ html {
 
 :root {
   --baseFont: "Nunito";
+  --accentFont: "Catamaran";
 
   --textColor: #585858;
-  --textAccentColor: #95305e;
 
   --fgColor: white;
   --bgColor: #e1e1e1;
+  --bgColorDarker: #bbb;
+
+  --accentColor: #6e1a39;
+  --accentColorDarker: #480b22;
+  --accentColorLighter: #bb4e76;
+  --accentColorWhite: #ffdbe8;
+  --accentColorText: #eba7c0;
+
+  --primaryBlue: #4474bf;
+  --skyBlue: #d2e2ff;
 
   --gap: 24px;
   --gapLarge: 48px;
   --gapSmall: 12px;
+
+  /* LAYOUT */
+  --headerHeight: 62px;
 }

@@ -1,12 +1,11 @@
 .container {
-  & .header {
-    height: 42px;
-    background: #333;
-    border-bottom: 2px solid black;
-  }
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 
   & .content {
-    max-width: 1200px;
-    margin: var(--gapLarge) auto;
+    height: calc(100vh - var(--headerHeight));
+    padding: var(--gap);
   }
 }

@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  align-items: center;
+  background: var(--accentColor);
+  padding: 0 var(--gap);
+  border-bottom: 4px solid var(--accentColorDarker);
+  height: calc(var(--headerHeight) - 4px);
+
+  & .title {
+    color: var(--accentColorText);
+    font-family: var(--accentFont);
+    font-size: 1.2em;
+  }
+}

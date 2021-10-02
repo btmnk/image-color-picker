@@ -1,47 +1,60 @@
-import React, { useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import classNames from "classnames";
+import React, { useState } from "react";
+
+import { ColorPicker } from "../../components/ColorPicker/ColorPicker";
+import { DropZone } from "../../components/ImageUpload/DropZone/DropZone";
+import { ImageUpload } from "../../components/ImageUpload/ImageUpload";
+
+import styles from "./Landing.css";
 
 export const Landing: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [image, setImage] = useState<HTMLImageElement | null>(null);
+  // const clearImage = () => setImage(null);
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const [targetFile] = event.target.files ?? [];
-    const canvas = canvasRef.current;
+  const [isHovering, setIsHovering] = useState(false);
+  const handleDragEnter = () => setIsHovering(true);
+  const handleDragLeave = () => setIsHovering(false);
 
-    if (targetFile && canvas) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(targetFile);
-      fileReader.onloadend = (readEvent) => {
-        const newImage = new Image();
-        const targetResultUrl = readEvent.target?.result?.toString();
+  const handleImageUpload = (file: File) => {
+    setIsHovering(false);
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onloadend = (readEvent) => {
+      const targetResultUrl = readEvent.target?.result?.toString();
 
-        if (!targetResultUrl) {
-          throw Error("Could not read file...");
-        }
+      if (!targetResultUrl) {
+        throw Error("Could not read file...");
+      }
 
-        newImage.src = targetResultUrl;
-        newImage.onload = (imageLoadEvent) => {
-          const canvasContext = canvas.getContext("2d");
-          if (!canvasContext) return;
-
-          canvas.width = newImage.width;
-          canvas.height = newImage.height;
-          canvasContext.drawImage(newImage, 0, 0);
-        };
+      const newImage = new Image();
+      newImage.src = targetResultUrl;
+      newImage.onload = () => {
+        setImage(newImage);
       };
-    }
+    };
   };
 
+  const containerClassNames = classNames(styles.container, image && styles.withImage, isHovering && styles.hovering);
+
   return (
-    <div>
-      <h1>Upload an image!</h1>
+    <div className={containerClassNames}>
+      <DropZone
+        className={styles.dropZone}
+        classNameInner={styles.dropZoneInner}
+        onUpload={handleImageUpload}
+        onDragEnter={handleDragEnter}
+        onDragLeave={handleDragLeave}
+      >
+        {!image && (
+          <ImageUpload onUpload={handleImageUpload} className={styles.imageUpload}>
+            <FontAwesomeIcon className={styles.imageUploadIcon} icon="upload" />
+            <div className={styles.imageUploadHint}>Click here to choose a file or drag and drop it here</div>
+          </ImageUpload>
+        )}
 
-      <div>
-        <input type="file" onChange={handleImageUpload} />
-      </div>
-
-      <div>
-        <canvas ref={canvasRef} />
-      </div>
+        <ColorPicker image={image} />
+      </DropZone>
     </div>
   );
 };
