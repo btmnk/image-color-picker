@@ -1,14 +1,127 @@
+.Header__container__OQGF0 {
+  display: flex;
+  align-items: center;
+  background: #6e1a39;
+  background: var(--accentColor);
+  padding: 0 24px;
+  padding: 0 var(--gap);
+  border-bottom: 4px solid #480b22;
+  border-bottom: 4px solid var(--accentColorDarker);
+  height: calc(62px - 4px);
+  height: calc(var(--headerHeight) - 4px)
+}
+.Header__container__OQGF0 .Header__title__HIUVy {
+    color: #eba7c0;
+    color: var(--accentColorText);
+    font-family: "Catamaran";
+    font-family: var(--accentFont);
+    font-size: 1.2em;
+  }
 
-  .BaseLayout__container__cBrOL .BaseLayout__header__SYDQf {
-    height: 42px;
-    background: #333;
-    border-bottom: 2px solid black;
-  }
+.BaseLayout__container__cBrOL {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden
+}
 .BaseLayout__container__cBrOL .BaseLayout__content__ZItBR {
-    max-width: 1200px;
-    margin: 48px auto;
-    margin: var(--gapLarge) auto;
+    height: calc(100vh - 62px);
+    height: calc(100vh - var(--headerHeight));
+    padding: 24px;
+    padding: var(--gap);
   }
+
+.ColorPicker__container___gYIr {
+  display: flex
+}
+.ColorPicker__container___gYIr .ColorPicker__canvasContainer__BjzF8 {
+    flex: 1;
+  }
+.ColorPicker__container___gYIr .ColorPicker__colorPreview__IWWS3 {
+    width: 250px;
+  }
+
+.ImageUpload__container___Z7qS {
+  display: block;
+  height: 100%
+}
+.ImageUpload__container___Z7qS .ImageUpload__inputContainer__Ie2r7 {
+    visibility: hidden;
+    height: 0;
+  }
+
+.Landing__container__LJrbB {
+  height: 100%;
+  border: 2px dashed #bbb;
+  border: 2px dashed var(--bgColorDarker);
+  transition: all 240ms
+}
+.Landing__container__LJrbB.Landing__hovering___sKQu {
+    border: 2px dashed #4474bf;
+    border: 2px dashed var(--primaryBlue);
+    background: #d2e2ff;
+    background: var(--skyBlue)
+  }
+.Landing__container__LJrbB.Landing__hovering___sKQu .Landing__imageUpload__zl55r {
+      color: #4474bf;
+      color: var(--primaryBlue)
+    }
+.Landing__container__LJrbB.Landing__hovering___sKQu .Landing__imageUpload__zl55r .Landing__imageUploadIcon__xcT2L {
+        transform: translateY(-8px) scale(1.2);
+      }
+.Landing__container__LJrbB:hover:not(.Landing__withImage__lU62P) {
+    border: 2px dashed #6e1a39;
+    border: 2px dashed var(--accentColor);
+    background: #ffdbe8;
+    background: var(--accentColorWhite)
+  }
+.Landing__container__LJrbB:hover:not(.Landing__withImage__lU62P) .Landing__imageUpload__zl55r {
+      color: #6e1a39;
+      color: var(--accentColor)
+    }
+.Landing__container__LJrbB:hover:not(.Landing__withImage__lU62P) .Landing__imageUpload__zl55r .Landing__imageUploadIcon__xcT2L {
+        transform: translateY(-8px) scale(1.2);
+      }
+.Landing__container__LJrbB.Landing__withImage__lU62P {
+    border-color: transparent
+  }
+.Landing__container__LJrbB.Landing__withImage__lU62P .Landing__canvas__WVHMo {
+      display: block;
+    }
+.Landing__container__LJrbB .Landing__dropZone__QAoEF {
+    height: 100%
+  }
+.Landing__container__LJrbB .Landing__dropZone__QAoEF .Landing__dropZoneInner__bHN80 {
+      display: flex;
+      flex-direction: column;
+      height: 100%
+    }
+.Landing__container__LJrbB .Landing__dropZone__QAoEF .Landing__dropZoneInner__bHN80 .Landing__imageUpload__zl55r {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        grid-gap: 24px;
+        gap: 24px;
+        grid-gap: var(--gap);
+        gap: var(--gap);
+        padding: 24px;
+        padding: var(--gap);
+        cursor: pointer;
+        transition: color 140ms
+      }
+.Landing__container__LJrbB .Landing__dropZone__QAoEF .Landing__dropZoneInner__bHN80 .Landing__imageUpload__zl55r .Landing__imageUploadIcon__xcT2L {
+          font-size: 36px;
+          transition: transform 240ms;
+        }
+.Landing__container__LJrbB .Landing__dropZone__QAoEF .Landing__dropZoneInner__bHN80 .Landing__imageUpload__zl55r .Landing__imageUploadHint__mSXUh {
+          opacity: 0.8;
+          text-align: center;
+        }
+.Landing__container__LJrbB .Landing__dropZone__QAoEF .Landing__dropZoneInner__bHN80 .Landing__canvas__WVHMo {
+        display: none;
+      }
 
 @font-face {
   font-family: "Nunito";
@@ -20,10 +133,20 @@
   src: url(/image-color-picker/assets/fonts/NunitoSans-Bold..ttf) format("truetype");
 }
 
+@font-face {
+  font-family: "Catamaran";
+  src: url(/image-color-picker/assets/fonts/Catamaran-Regular..ttf) format("truetype");
+}
+@font-face {
+  font-family: "Catamaran";
+  font-weight: 500;
+  src: url(/image-color-picker/assets/fonts/Catamaran-Bold..ttf) format("truetype");
+}
+
 html {
   font-family: "Nunito";
   font-family: var(--baseFont);
-  font-size: 14px;
+  font-size: 16px;
   scroll-behavior: smooth;
   color: #585858;
   color: var(--textColor);
@@ -33,15 +156,28 @@ html {
 
 :root {
   --baseFont: "Nunito";
+  --accentFont: "Catamaran";
 
   --textColor: #585858;
-  --textAccentColor: #95305e;
 
   --fgColor: white;
   --bgColor: #e1e1e1;
+  --bgColorDarker: #bbb;
+
+  --accentColor: #6e1a39;
+  --accentColorDarker: #480b22;
+  --accentColorLighter: #bb4e76;
+  --accentColorWhite: #ffdbe8;
+  --accentColorText: #eba7c0;
+
+  --primaryBlue: #4474bf;
+  --skyBlue: #d2e2ff;
 
   --gap: 24px;
   --gapLarge: 48px;
   --gapSmall: 12px;
+
+  /* LAYOUT */
+  --headerHeight: 62px;
 }
 
