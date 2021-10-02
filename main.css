@@ -1,0 +1,47 @@
+
+  .BaseLayout__container__cBrOL .BaseLayout__header__SYDQf {
+    height: 42px;
+    background: #333;
+    border-bottom: 2px solid black;
+  }
+.BaseLayout__container__cBrOL .BaseLayout__content__ZItBR {
+    max-width: 1200px;
+    margin: 48px auto;
+    margin: var(--gapLarge) auto;
+  }
+
+@font-face {
+  font-family: "Nunito";
+  src: url(/assets/fonts/NunitoSans-Regular..ttf) format("truetype");
+}
+@font-face {
+  font-family: "Nunito";
+  font-weight: 500;
+  src: url(/assets/fonts/NunitoSans-Bold..ttf) format("truetype");
+}
+
+html {
+  font-family: "Nunito";
+  font-family: var(--baseFont);
+  font-size: 14px;
+  scroll-behavior: smooth;
+  color: #585858;
+  color: var(--textColor);
+  background: #e1e1e1;
+  background: var(--bgColor);
+}
+
+:root {
+  --baseFont: "Nunito";
+
+  --textColor: #585858;
+  --textAccentColor: #95305e;
+
+  --fgColor: white;
+  --bgColor: #e1e1e1;
+
+  --gap: 24px;
+  --gapLarge: 48px;
+  --gapSmall: 12px;
+}
+
