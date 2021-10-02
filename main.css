@@ -12,12 +12,12 @@
 
 @font-face {
   font-family: "Nunito";
-  src: url(assets/fonts/NunitoSans-Regular..ttf) format("truetype");
+  src: url(/image-color-picker/assets/fonts/NunitoSans-Regular..ttf) format("truetype");
 }
 @font-face {
   font-family: "Nunito";
   font-weight: 500;
-  src: url(assets/fonts/NunitoSans-Bold..ttf) format("truetype");
+  src: url(/image-color-picker/assets/fonts/NunitoSans-Bold..ttf) format("truetype");
 }
 
 html {
