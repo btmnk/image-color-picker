@@ -8,7 +8,6 @@
 
   & .title {
     color: var(--accentColorText);
-    font-family: var(--accentFont);
     font-size: 1.2em;
   }
 }

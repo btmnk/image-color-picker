@@ -1,0 +1,37 @@
+.container {
+  border: 2px dashed var(--bgColorDarker);
+  padding: var(--gapSmall);
+  cursor: pointer;
+  transition: all 140ms;
+
+  &:hover {
+    border-color: var(--accentColorLighter);
+    color: var(--accentColor);
+    background: var(--accentColorBackground);
+  }
+
+  &.hovering {
+    border-color: var(--primaryGreenLighter);
+    color: var(--primaryGreen);
+    background: var(--primaryGreenBackground);
+  }
+
+  & .imageUpload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    gap: var(--gapSmall);
+
+    & .imageUploadIcon {
+      font-size: 36px;
+      transition: transform 240ms;
+    }
+
+    & .imageUploadHint {
+      opacity: 0.8;
+      text-align: center;
+    }
+  }
+}

@@ -6,13 +6,12 @@ export interface DropZoneProps {
   onDragLeave?: (event: DragEvent<HTMLDivElement>) => void;
   onError?: (error: string) => void;
   className?: string;
-  classNameInner?: string;
 }
 
 let draggingCounter = 0;
 
 export const DropZone: React.FC<DropZoneProps> = (props) => {
-  const { onUpload, onDragLeave, onDragEnter, onError, className, classNameInner, children } = props;
+  const { onUpload, onDragLeave, onDragEnter, onError, className, children } = props;
 
   const [hasError, setHasError] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
@@ -72,7 +71,7 @@ export const DropZone: React.FC<DropZoneProps> = (props) => {
       onDragLeave={handleDragLeave}
       onDragOver={handleDragOver}
     >
-      <div className={classNameInner}>{children}</div>
+      {children}
     </div>
   );
 };

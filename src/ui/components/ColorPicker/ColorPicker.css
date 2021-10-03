@@ -1,11 +1,18 @@
 .container {
   display: flex;
+  justify-content: center;
+  gap: var(--gap);
 
   & .canvasContainer {
     flex: 1;
+    border: 8px solid white;
+
+    & canvas {
+      display: block;
+    }
   }
 
   & .colorPreview {
-    width: 250px;
+    min-width: 150px;
   }
 }

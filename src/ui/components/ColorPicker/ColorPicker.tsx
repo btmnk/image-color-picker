@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 
+import { ColorPreview } from "../ColorPreview/ColorPreview";
+
 import styles from "./ColorPicker.css";
 
 export interface ColorPickerProps {
-  image: HTMLImageElement | null;
+  image: HTMLImageElement;
 }
 
 export const ColorPicker: React.FC<ColorPickerProps> = (props) => {
@@ -11,8 +13,10 @@ export const ColorPicker: React.FC<ColorPickerProps> = (props) => {
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvasContainerRef = useRef<HTMLDivElement>(null);
+  const canvasContextRef = useRef<CanvasRenderingContext2D | null>(null);
 
-  const [color, setColor] = useState<string | undefined>();
+  const [hoverColor, setHoverColor] = useState<{ red: number; green: number; blue: number } | undefined>();
+  const [color, setColor] = useState<{ red: number; green: number; blue: number } | undefined>();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -21,23 +25,66 @@ export const ColorPicker: React.FC<ColorPickerProps> = (props) => {
     if (canvas && canvasContainerRect) {
       const canvasContext = canvas.getContext("2d");
       if (!canvasContext) return;
+      canvasContextRef.current = canvasContext;
 
       if (image) {
-        canvas.height = image.height;
-        canvas.width = canvasContainerRect.width;
-        canvasContext.drawImage(image, 0, 0);
+        if (image.width > image.height) {
+          const canvasMaxWidth = canvasContainerRect.width;
+          const reducedImageWidth = Math.min(image.width, canvasMaxWidth);
+          const imageWidthReduction = reducedImageWidth / image.width;
 
-        const imageData = canvasContext.getImageData(5, 5, 1, 1);
-        const [red, green, blue] = imageData.data;
-        setColor(`${red},${green},${blue}`);
+          canvas.width = reducedImageWidth;
+          canvas.height = image.height * imageWidthReduction;
+        } else {
+          const canvasMaxHeight = window.innerHeight * 0.75;
+          const reducedImageHeight = Math.min(image.height, canvasMaxHeight);
+          const imageHeightReduction = reducedImageHeight / image.height;
 
-        canvasContext.strokeStyle = "0x000000";
-        canvasContext.strokeRect(0, 0, canvas.width, canvas.height);
+          canvas.width = image.width * imageHeightReduction;
+          canvas.height = reducedImageHeight;
+        }
+
+        canvasContext.drawImage(image, 0, 0, canvas.width, canvas.height);
       } else {
         canvasContext.clearRect(0, 0, canvas.width, canvas.height);
       }
     }
   }, [image]);
+
+  const [isMouseOver, setIsMouseOver] = useState(false);
+  const requestAnimationFrameRef = useRef<number>(0);
+  useEffect(() => {
+    const handleMouseEnter = () => setIsMouseOver(true);
+    const handleMouseLeave = () => setIsMouseOver(false);
+
+    const updateMousePosition = (event: MouseEvent) => {
+      const canvasContext = canvasContextRef.current;
+      if (canvasContext) {
+        const [red, green, blue] = canvasContext.getImageData(event.offsetX, event.offsetY, 1, 1).data;
+        setHoverColor({ red, green, blue });
+      }
+    };
+
+    const handleMouseMove = (event: MouseEvent) => {
+      cancelAnimationFrame(requestAnimationFrameRef.current);
+      requestAnimationFrameRef.current = requestAnimationFrame(() => updateMousePosition(event));
+    };
+
+    const canvasContainer = canvasContainerRef.current;
+    if (canvasContainer) {
+      canvasContainer.addEventListener("mouseenter", handleMouseEnter);
+      canvasContainer.addEventListener("mouseleave", handleMouseLeave);
+      canvasContainer.addEventListener("mousemove", handleMouseMove);
+    }
+
+    return () => {
+      if (canvasContainer) {
+        canvasContainer.removeEventListener("mouseenter", handleMouseEnter);
+        canvasContainer.removeEventListener("mouseleave", handleMouseLeave);
+        canvasContainer.removeEventListener("mousemove", handleMouseMove);
+      }
+    };
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -45,7 +92,14 @@ export const ColorPicker: React.FC<ColorPickerProps> = (props) => {
         <canvas ref={canvasRef} />
       </div>
 
-      {image && <div className={styles.colorPreview}>First Color: {color}</div>}
+      {image && (
+        <div className={styles.colorPreview}>
+          <div>
+            <div>Hovered color</div>
+            <ColorPreview rgb={hoverColor} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

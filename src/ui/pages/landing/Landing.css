@@ -1,74 +1,8 @@
 .container {
-  height: 100%;
-  border: 2px dashed var(--bgColorDarker);
-  transition: all 240ms;
-
-  &.hovering {
-    border: 2px dashed var(--primaryBlue);
-    background: var(--skyBlue);
-
-    & .imageUpload {
-      color: var(--primaryBlue);
-
-      & .imageUploadIcon {
-        transform: translateY(-8px) scale(1.2);
-      }
-    }
-  }
-  &:hover:not(.withImage) {
-    border: 2px dashed var(--accentColor);
-    background: var(--accentColorWhite);
-
-    & .imageUpload {
-      color: var(--accentColor);
-
-      & .imageUploadIcon {
-        transform: translateY(-8px) scale(1.2);
-      }
-    }
-  }
-
-  &.withImage {
-    border-color: transparent;
-
-    & .canvas {
-      display: block;
-    }
-  }
-
-  & .dropZone {
-    height: 100%;
-
-    & .dropZoneInner {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-
-      & .imageUpload {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: var(--gap);
-        padding: var(--gap);
-        cursor: pointer;
-        transition: color 140ms;
-
-        & .imageUploadIcon {
-          font-size: 36px;
-          transition: transform 240ms;
-        }
-
-        & .imageUploadHint {
-          opacity: 0.8;
-          text-align: center;
-        }
-      }
-
-      & .canvas {
-        display: none;
-      }
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  max-width: var(--maxContentWidth);
+  margin: 0 auto;
+  padding: 0 var(--gap);
 }
