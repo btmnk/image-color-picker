@@ -1,28 +1,25 @@
 .Header__container__OQGF0 {
   display: flex;
   align-items: center;
-  background: #6e1a39;
+  background: #2d4571;
   background: var(--accentColor);
   padding: 0 24px;
   padding: 0 var(--gap);
-  border-bottom: 4px solid #480b22;
+  border-bottom: 4px solid #152c55;
   border-bottom: 4px solid var(--accentColorDarker);
   height: calc(62px - 4px);
   height: calc(var(--headerHeight) - 4px)
 }
 .Header__container__OQGF0 .Header__title__HIUVy {
-    color: #eba7c0;
+    color: #9eb4dc;
     color: var(--accentColorText);
-    font-family: "Catamaran";
-    font-family: var(--accentFont);
     font-size: 1.2em;
   }
 
 .BaseLayout__container__cBrOL {
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  overflow: hidden
+  flex-direction: column
 }
 .BaseLayout__container__cBrOL .BaseLayout__content__ZItBR {
     height: calc(100vh - 62px);
@@ -31,14 +28,38 @@
     padding: var(--gap);
   }
 
+.ColorPreview__container__grml_ {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 12px;
+  gap: 12px;
+  grid-gap: var(--gapSmall);
+  gap: var(--gapSmall)
+}
+.ColorPreview__container__grml_ .ColorPreview__colorBlock___veJg {
+    height: 30px;
+    border: 2px solid white;
+  }
+.ColorPreview__container__grml_ .ColorPreview__hexCode__F8QWN {
+  }
+
 .ColorPicker__container___gYIr {
-  display: flex
+  display: flex;
+  justify-content: center;
+  grid-gap: 24px;
+  gap: 24px;
+  grid-gap: var(--gap);
+  gap: var(--gap)
 }
 .ColorPicker__container___gYIr .ColorPicker__canvasContainer__BjzF8 {
     flex: 1;
+    border: 8px solid white
   }
+.ColorPicker__container___gYIr .ColorPicker__canvasContainer__BjzF8 canvas {
+      display: block;
+    }
 .ColorPicker__container___gYIr .ColorPicker__colorPreview__IWWS3 {
-    width: 250px;
+    min-width: 150px;
   }
 
 .ImageUpload__container___Z7qS {
@@ -46,82 +67,66 @@
   height: 100%
 }
 .ImageUpload__container___Z7qS .ImageUpload__inputContainer__Ie2r7 {
-    visibility: hidden;
-    height: 0;
+    display: none;
   }
 
-.Landing__container__LJrbB {
-  height: 100%;
+.UploadArea__container___cDio {
   border: 2px dashed #bbb;
   border: 2px dashed var(--bgColorDarker);
-  transition: all 240ms
+  padding: 12px;
+  padding: var(--gapSmall);
+  cursor: pointer;
+  transition: all 140ms
 }
-.Landing__container__LJrbB.Landing__hovering___sKQu {
-    border: 2px dashed #4474bf;
-    border: 2px dashed var(--primaryBlue);
-    background: #d2e2ff;
-    background: var(--skyBlue)
+.UploadArea__container___cDio:hover {
+    border-color: #4d648d;
+    border-color: var(--accentColorLighter);
+    color: #2d4571;
+    color: var(--accentColor);
+    background: #9eb4dc;
+    background: var(--accentColorBackground);
   }
-.Landing__container__LJrbB.Landing__hovering___sKQu .Landing__imageUpload__zl55r {
-      color: #4474bf;
-      color: var(--primaryBlue)
-    }
-.Landing__container__LJrbB.Landing__hovering___sKQu .Landing__imageUpload__zl55r .Landing__imageUploadIcon__xcT2L {
-        transform: translateY(-8px) scale(1.2);
-      }
-.Landing__container__LJrbB:hover:not(.Landing__withImage__lU62P) {
-    border: 2px dashed #6e1a39;
-    border: 2px dashed var(--accentColor);
-    background: #ffdbe8;
-    background: var(--accentColorWhite)
+.UploadArea__container___cDio.UploadArea__hovering__UvC5e {
+    border-color: #6fb56f;
+    border-color: var(--primaryGreenLighter);
+    color: #316e31;
+    color: var(--primaryGreen);
+    background: #ceffd4;
+    background: var(--primaryGreenBackground);
   }
-.Landing__container__LJrbB:hover:not(.Landing__withImage__lU62P) .Landing__imageUpload__zl55r {
-      color: #6e1a39;
-      color: var(--accentColor)
-    }
-.Landing__container__LJrbB:hover:not(.Landing__withImage__lU62P) .Landing__imageUpload__zl55r .Landing__imageUploadIcon__xcT2L {
-        transform: translateY(-8px) scale(1.2);
-      }
-.Landing__container__LJrbB.Landing__withImage__lU62P {
-    border-color: transparent
+.UploadArea__container___cDio .UploadArea__imageUpload__jVmLq {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    grid-gap: 12px;
+    gap: 12px;
+    grid-gap: var(--gapSmall);
+    gap: var(--gapSmall)
   }
-.Landing__container__LJrbB.Landing__withImage__lU62P .Landing__canvas__WVHMo {
-      display: block;
+.UploadArea__container___cDio .UploadArea__imageUpload__jVmLq .UploadArea__imageUploadIcon__Pz9A8 {
+      font-size: 36px;
+      transition: transform 240ms;
     }
-.Landing__container__LJrbB .Landing__dropZone__QAoEF {
-    height: 100%
-  }
-.Landing__container__LJrbB .Landing__dropZone__QAoEF .Landing__dropZoneInner__bHN80 {
-      display: flex;
-      flex-direction: column;
-      height: 100%
+.UploadArea__container___cDio .UploadArea__imageUpload__jVmLq .UploadArea__imageUploadHint___7kVp {
+      opacity: 0.8;
+      text-align: center;
     }
-.Landing__container__LJrbB .Landing__dropZone__QAoEF .Landing__dropZoneInner__bHN80 .Landing__imageUpload__zl55r {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        grid-gap: 24px;
-        gap: 24px;
-        grid-gap: var(--gap);
-        gap: var(--gap);
-        padding: 24px;
-        padding: var(--gap);
-        cursor: pointer;
-        transition: color 140ms
-      }
-.Landing__container__LJrbB .Landing__dropZone__QAoEF .Landing__dropZoneInner__bHN80 .Landing__imageUpload__zl55r .Landing__imageUploadIcon__xcT2L {
-          font-size: 36px;
-          transition: transform 240ms;
-        }
-.Landing__container__LJrbB .Landing__dropZone__QAoEF .Landing__dropZoneInner__bHN80 .Landing__imageUpload__zl55r .Landing__imageUploadHint__mSXUh {
-          opacity: 0.8;
-          text-align: center;
-        }
-.Landing__container__LJrbB .Landing__dropZone__QAoEF .Landing__dropZoneInner__bHN80 .Landing__canvas__WVHMo {
-        display: none;
-      }
+
+.Landing__container__LJrbB {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 24px;
+  gap: 24px;
+  grid-gap: var(--gap);
+  gap: var(--gap);
+  max-width: 1200px;
+  max-width: var(--maxContentWidth);
+  margin: 0 auto;
+  padding: 0 24px;
+  padding: 0 var(--gap);
+}
 
 @font-face {
   font-family: "Nunito";
@@ -131,16 +136,6 @@
   font-family: "Nunito";
   font-weight: 500;
   src: url(/image-color-picker/assets/fonts/NunitoSans-Bold..ttf) format("truetype");
-}
-
-@font-face {
-  font-family: "Catamaran";
-  src: url(/image-color-picker/assets/fonts/Catamaran-Regular..ttf) format("truetype");
-}
-@font-face {
-  font-family: "Catamaran";
-  font-weight: 500;
-  src: url(/image-color-picker/assets/fonts/Catamaran-Bold..ttf) format("truetype");
 }
 
 html {
@@ -156,7 +151,6 @@ html {
 
 :root {
   --baseFont: "Nunito";
-  --accentFont: "Catamaran";
 
   --textColor: #585858;
 
@@ -164,20 +158,24 @@ html {
   --bgColor: #e1e1e1;
   --bgColorDarker: #bbb;
 
-  --accentColor: #6e1a39;
-  --accentColorDarker: #480b22;
-  --accentColorLighter: #bb4e76;
-  --accentColorWhite: #ffdbe8;
-  --accentColorText: #eba7c0;
+  --accentColor: #2d4571;
+  --accentColorDarker: #152c55;
+  --accentColorLighter: #4d648d;
+  --accentColorBackground: #9eb4dc;
+  --accentColorText: #9eb4dc;
 
-  --primaryBlue: #4474bf;
-  --skyBlue: #d2e2ff;
+  --primaryGreen: #316e31;
+  --primaryGreenDarker: #00ff00;
+  --primaryGreenLighter: #6fb56f;
+  --primaryGreenBackground: #ceffd4;
+  --primaryGreenText: #ceffd4;
 
   --gap: 24px;
   --gapLarge: 48px;
   --gapSmall: 12px;
 
   /* LAYOUT */
+  --maxContentWidth: 1200px;
   --headerHeight: 62px;
 }
 
